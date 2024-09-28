@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import { SocketProvider } from "@/providers/socket-provider";
 import Header from "@/components/Header/Header";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        <SocketProvider>
+          <Header />
+          <Sidebar />
+          {children}
+        </SocketProvider>
       </body>
     </html>
   );

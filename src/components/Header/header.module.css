@@ -5,8 +5,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 200px;
-  z-index: 100;
+  z-index: 10;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
 }
 
 .header__logo-wrapper {
@@ -19,6 +20,8 @@
   text-transform: uppercase;
   color: #00dc7f;
   margin: 0;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .header__time-wrapper {
