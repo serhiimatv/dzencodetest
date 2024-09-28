@@ -20,3 +20,9 @@
   color: #00dc7f;
   margin: 0;
 }
+
+.header__time-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
