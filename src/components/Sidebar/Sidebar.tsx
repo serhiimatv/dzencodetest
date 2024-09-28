@@ -8,7 +8,13 @@ const Sidebar = () => {
   return (
     <aside className={`${styles["sidebar"]} position-fixed`}>
       <div className={`${styles["sidebar__avatar"]}`}>
-        <Image src={avatar} alt="user image" width={100} height={100}></Image>
+        <Image
+          src={avatar}
+          alt="user image"
+          width={100}
+          height={100}
+          priority
+        ></Image>
         <span
           className={`${styles["sidebar__avatar-setting"]} position-absolute bottom-0 end-0`}
         >

@@ -1,11 +1,9 @@
 import styles from "./header.module.css";
 import logo from "@/img/logo.png";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import UserCount from "../UserCount/UserCount";
 import Link from "next/link";
-
-const Time = dynamic(() => import("../Today/Today"), { ssr: false });
+import Today from "../Today/Today";
 
 const Header = () => {
   return (
@@ -17,7 +15,7 @@ const Header = () => {
         </Link>
       </div>
       <div className={styles["header__time-wrapper"]}>
-        <Time />
+        <Today />
         <UserCount />
       </div>
     </header>
