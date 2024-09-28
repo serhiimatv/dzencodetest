@@ -26,7 +26,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_URL!, {
+    const socketInstance = (ClientIO as any)(process.env.NEXT_PUBLIC_URL!, {
       path: "/api/socket/io",
       addTrailingSlash: false,
     });

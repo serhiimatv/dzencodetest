@@ -1,0 +1,36 @@
+.sidebar {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 100vh;
+  width: 15%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 9;
+  padding-top: 150px;
+}
+
+.sidebar__avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.sidebar__avatar-setting {
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebar__navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__navigation-link {
+  display: block;
+  border-bottom: 3px solid transparent;
+}
+.sidebar__navigation-link:hover {
+  border-bottom: 3px solid green;
+}
