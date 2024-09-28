@@ -1,31 +1,6 @@
 import { useEffect, useState } from "react";
 
-const DAYS = [
-  "Воскресенье",
-  "Подельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Суббота",
-];
-
-const MONTH = [
-  "Янв",
-  "Фев",
-  "Мар",
-  "Апр",
-  "Май",
-  "Июн",
-  "Июл",
-  "Авг",
-  "Сен",
-  "Окт",
-  "Ноя",
-  "Дек",
-];
-
-export const useDate = () => {
+export const useTime = () => {
   const [today, setToday] = useState(new Date());
 
   useEffect(() => {
@@ -37,10 +12,6 @@ export const useDate = () => {
     };
   }, [today]);
 
-  const day = DAYS[today.getDay()];
-  const date = today.getDate();
-  const month = MONTH[today.getMonth()];
-  const year = today.getFullYear();
   const time = {
     hours: today.getHours() < 10 ? `0${today.getHours()}` : today.getHours(),
     minutes:
@@ -49,5 +20,5 @@ export const useDate = () => {
       today.getSeconds() < 10 ? `0${today.getSeconds()}` : today.getSeconds(),
   };
 
-  return { day, date, month, year, time };
+  return time;
 };

@@ -7,10 +7,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.today__time {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  align-self: end;
-}
