@@ -1,0 +1,10 @@
+.dropdown-menu__item {
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+}
+.dropdown-menu__btn {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}

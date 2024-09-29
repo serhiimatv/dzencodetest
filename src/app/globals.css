@@ -6,8 +6,9 @@
 }
 
 body {
-  height: 5000px;
+  background-color: #f5f5f5;
 }
+
 a {
   text-decoration: none;
 }
