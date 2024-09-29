@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "serialNumber": 1234,
+    "isNew": 1,
+    "photo": "pathToFile1.jpg",
+    "title": "Product 1",
+    "type": "Monitors",
+    "specification": "Specification 1",
+    "guarantee": {
+      "start": "2017-06-29 12:09:33",
+      "end": "2018-06-29 12:09:33"
+    },
+    "price": [
+      { "value": 100, "symbol": "USD", "isDefault": 0 },
+      { "value": 2600, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 1,
+    "date": "2017-06-29 12:09:33"
+  },
+  {
+    "id": 2,
+    "serialNumber": 5678,
+    "isNew": 0,
+    "photo": "pathToFile2.jpg",
+    "title": "Product 2",
+    "type": "Laptops",
+    "specification": "Specification 2",
+    "guarantee": {
+      "start": "2018-01-15 09:45:22",
+      "end": "2019-01-15 09:45:22"
+    },
+    "price": [
+      { "value": 500, "symbol": "USD", "isDefault": 0 },
+      { "value": 13000, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 2,
+    "date": "2018-01-15 09:45:22"
+  },
+  {
+    "id": 3,
+    "serialNumber": 9101,
+    "isNew": 1,
+    "photo": "pathToFile3.jpg",
+    "title": "Product 3",
+    "type": "Smartphones",
+    "specification": "Specification 3",
+    "guarantee": {
+      "start": "2019-03-10 11:20:55",
+      "end": "2020-03-10 11:20:55"
+    },
+    "price": [
+      { "value": 300, "symbol": "USD", "isDefault": 0 },
+      { "value": 7800, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 3,
+    "date": "2019-03-10 11:20:55"
+  },
+  {
+    "id": 4,
+    "serialNumber": 1112,
+    "isNew": 0,
+    "photo": "pathToFile4.jpg",
+    "title": "Product 4",
+    "type": "Tablets",
+    "specification": "Specification 4",
+    "guarantee": {
+      "start": "2020-07-21 14:30:00",
+      "end": "2021-07-21 14:30:00"
+    },
+    "price": [
+      { "value": 200, "symbol": "USD", "isDefault": 0 },
+      { "value": 5200, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 4,
+    "date": "2020-07-21 14:30:00"
+  },
+  {
+    "id": 5,
+    "serialNumber": 1314,
+    "isNew": 1,
+    "photo": "pathToFile5.jpg",
+    "title": "Product 5",
+    "type": "Monitors",
+    "specification": "Specification 5",
+    "guarantee": {
+      "start": "2021-04-09 10:00:00",
+      "end": "2022-04-09 10:00:00"
+    },
+    "price": [
+      { "value": 150, "symbol": "USD", "isDefault": 0 },
+      { "value": 3900, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 5,
+    "date": "2021-04-09 10:00:00"
+  },
+  {
+    "id": 6,
+    "serialNumber": 1516,
+    "isNew": 0,
+    "photo": "pathToFile6.jpg",
+    "title": "Product 6",
+    "type": "Laptops",
+    "specification": "Specification 6",
+    "guarantee": {
+      "start": "2022-08-18 16:45:30",
+      "end": "2023-08-18 16:45:30"
+    },
+    "price": [
+      { "value": 700, "symbol": "USD", "isDefault": 0 },
+      { "value": 18200, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 6,
+    "date": "2022-08-18 16:45:30"
+  },
+  {
+    "id": 7,
+    "serialNumber": 1718,
+    "isNew": 1,
+    "photo": "pathToFile7.jpg",
+    "title": "Product 7",
+    "type": "Smartphones",
+    "specification": "Specification 7",
+    "guarantee": {
+      "start": "2021-11-05 12:00:00",
+      "end": "2022-11-05 12:00:00"
+    },
+    "price": [
+      { "value": 350, "symbol": "USD", "isDefault": 0 },
+      { "value": 9100, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 7,
+    "date": "2021-11-05 12:00:00"
+  },
+  {
+    "id": 8,
+    "serialNumber": 1920,
+    "isNew": 0,
+    "photo": "pathToFile8.jpg",
+    "title": "Product 8",
+    "type": "Tablets",
+    "specification": "Specification 8",
+    "guarantee": {
+      "start": "2023-05-22 09:30:00",
+      "end": "2024-05-22 09:30:00"
+    },
+    "price": [
+      { "value": 250, "symbol": "USD", "isDefault": 0 },
+      { "value": 6500, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 8,
+    "date": "2023-05-22 09:30:00"
+  },
+  {
+    "id": 9,
+    "serialNumber": 2122,
+    "isNew": 1,
+    "photo": "pathToFile9.jpg",
+    "title": "Product 9",
+    "type": "Monitors",
+    "specification": "Specification 9",
+    "guarantee": {
+      "start": "2020-12-13 11:15:45",
+      "end": "2021-12-13 11:15:45"
+    },
+    "price": [
+      { "value": 180, "symbol": "USD", "isDefault": 0 },
+      { "value": 4700, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 9,
+    "date": "2020-12-13 11:15:45"
+  },
+  {
+    "id": 10,
+    "serialNumber": 2324,
+    "isNew": 0,
+    "photo": "pathToFile10.jpg",
+    "title": "Product 10",
+    "type": "Laptops",
+    "specification": "Specification 10",
+    "guarantee": {
+      "start": "2022-10-30 15:50:00",
+      "end": "2023-10-30 15:50:00"
+    },
+    "price": [
+      { "value": 600, "symbol": "USD", "isDefault": 0 },
+      { "value": 15600, "symbol": "UAH", "isDefault": 1 }
+    ],
+    "order": 10,
+    "date": "2022-10-30 15:50:00"
+  }
+]

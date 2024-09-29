@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { SocketProvider } from "@/providers/socket-provider";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";

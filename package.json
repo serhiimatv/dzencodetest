@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "next": "14.2.13",
+    "overlayscrollbars-react": "^0.5.6",
     "react": "^18",
     "react-dom": "^18",
     "socket.io": "^4.8.0",
