@@ -14,7 +14,7 @@ export type NextApiResponseServerIo = NextApiResponse & {
 
 export interface IProductsState {
   products: IProduct[];
-  filter: "monitors" | "laptops" | "smartphones" | "Tablets" | null;
+  filter: "monitors" | "laptops" | "smartphones" | "tablets" | null;
   loading: boolean;
   errors: boolean;
 }

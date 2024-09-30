@@ -11,6 +11,7 @@ import {
   fetchProducts,
   productsLoadingSelector,
   productsSelector,
+  productsFiltersSelector,
 } from "@/store/slices/productsSlice";
 
 const ProductsList = () => {
@@ -23,8 +24,18 @@ const ProductsList = () => {
 
   const loading = useAppSelector(productsLoadingSelector);
   const error = useAppSelector(productsErrorSelector);
+  const filter = useAppSelector(productsFiltersSelector);
 
-  const products = useAppSelector(productsSelector);
+  const products = useAppSelector((state) => {
+    const products = productsSelector(state);
+    if (!filter) {
+      return products;
+    }
+    return products.filter(
+      (product) =>
+        product.type.toLocaleLowerCase() === filter.toLocaleLowerCase()
+    );
+  });
 
   if (loading) {
     return <div>Загрузка...</div>;

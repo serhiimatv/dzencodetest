@@ -53,10 +53,20 @@ const productsSlice = createSliceWithThunks({
         },
       }
     ),
+    toggleFilters: create.reducer(
+      (
+        state: IProductsState,
+        action: PayloadAction<
+          "monitors" | "laptops" | "smartphones" | "tablets" | null
+        >
+      ) => {
+        state.filter = action.payload;
+      }
+    ),
   }),
 });
 
-export const { fetchProducts } = productsSlice.actions;
+export const { fetchProducts, toggleFilters } = productsSlice.actions;
 
 export const {
   productsSelector,

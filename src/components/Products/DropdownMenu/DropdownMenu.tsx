@@ -1,16 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./dropdownmenu.module.css";
+import { useAppDispatch, useAppSelector } from "@/hooks/reduxHooks";
+import {
+  productsFiltersSelector,
+  toggleFilters,
+} from "@/store/slices/productsSlice";
 
 const DropdownMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
-  const handleSelect = (type: string | null) => {
+  const filter = useAppSelector(productsFiltersSelector);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState<
+    "monitors" | "laptops" | "smartphones" | "tablets" | null
+  >(filter);
+
+  const handleSelect = (
+    type: "monitors" | "laptops" | "smartphones" | "tablets" | null
+  ) => {
     setSelectedType(type);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(toggleFilters(selectedType));
+  }, [selectedType, dispatch]);
 
   return (
     <div className="dropdown">
@@ -34,25 +51,33 @@ const DropdownMenu = () => {
           <li className={`${styles["dropdown-menu__item"]} dropdown-item`}>
             <button
               className={`${styles["dropdown-menu__btn"]}`}
-              onClick={() => handleSelect("Тип 1")}
+              onClick={() => handleSelect("monitors")}
             >
-              Тип 1
+              monitors
             </button>
           </li>
           <li className={`${styles["dropdown-menu__item"]} dropdown-item`}>
             <button
               className={`${styles["dropdown-menu__btn"]}`}
-              onClick={() => handleSelect("Тип 2")}
+              onClick={() => handleSelect("laptops")}
             >
-              Тип 2
+              laptops
             </button>
           </li>
           <li className={`${styles["dropdown-menu__item"]} dropdown-item`}>
             <button
               className={`${styles["dropdown-menu__btn"]}`}
-              onClick={() => handleSelect("Тип 3")}
+              onClick={() => handleSelect("smartphones")}
             >
-              Тип 3
+              smartphones
+            </button>
+          </li>
+          <li className={`${styles["dropdown-menu__item"]} dropdown-item`}>
+            <button
+              className={`${styles["dropdown-menu__btn"]}`}
+              onClick={() => handleSelect("tablets")}
+            >
+              tablets
             </button>
           </li>
         </ul>
