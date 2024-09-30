@@ -2,12 +2,12 @@
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import styles from "./productslist.module.css";
 import "overlayscrollbars/overlayscrollbars.css";
-import { IProducts } from "@/models/products";
+import { IProduct } from "@/models/product";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 
 interface IProductsListProps {
-  products: IProducts[];
+  products: IProduct[];
 }
 
 const ProductsList = ({ products }: IProductsListProps) => {
