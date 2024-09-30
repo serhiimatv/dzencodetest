@@ -52,13 +52,13 @@ const Orders = () => {
     let totalAmountDollars = 0;
     let totalAmountHrivnas = 0;
 
-    filteredProducts.every((product) => {
+    filteredProducts.forEach((product) => {
       product.price.forEach((price) => {
         if (price.symbol === "USD") {
-          totalAmountDollars += price.value;
+          totalAmountDollars = price.value + totalAmountDollars;
         }
         if (price.symbol === "UAH") {
-          totalAmountHrivnas += price.value;
+          totalAmountHrivnas = price.value + totalAmountHrivnas;
         }
       });
     });
