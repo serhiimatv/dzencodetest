@@ -1,20 +1,44 @@
 "use client";
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useRef, useState } from "react";
 import styles from "./orders.module.css";
-import dataOrders from "../../../mocorders.json";
-import dataProducts from "../../../mocparoducts.json";
-import { IOrder } from "@/models/order";
-import { IProduct } from "@/models/product";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 import arrowIcon from "@/img/arrow.svg";
 import { motion } from "framer-motion";
 import SmallProductsList from "./SmallProductsList/SmallProductsList";
 import Modal from "@/components/Modal/Modal";
+import { useAppSelector, useAppStore } from "@/hooks/reduxHooks";
+import {
+  productsErrorSelector,
+  fetchProducts,
+  productsLoadingSelector,
+  productsSelector,
+} from "@/store/slices/productsSlice";
+import {
+  fetchOrders,
+  ordersErrorSelector,
+  ordersLoadingSelector,
+  ordersSelector,
+} from "@/store/slices/ordersSlice";
 
 const Orders = () => {
-  const orders: IOrder[] = dataOrders;
-  const products: IProduct[] = dataProducts;
+  const store = useAppStore();
+  const initialized = useRef(false);
+  if (!initialized.current) {
+    store.dispatch(fetchProducts());
+    store.dispatch(fetchOrders());
+    initialized.current = true;
+  }
+
+  const productsLoading = useAppSelector(productsLoadingSelector);
+  const productsError = useAppSelector(productsErrorSelector);
+
+  const ordersLoading = useAppSelector(ordersLoadingSelector);
+  const ordersError = useAppSelector(ordersErrorSelector);
+
+  const orders = useAppSelector(ordersSelector);
+  const products = useAppSelector(productsSelector);
+
   const [selectedOrder, setSelectedOrder] = useState<{
     id: number;
     title: string;
@@ -62,6 +86,14 @@ const Orders = () => {
   const handleModalClose = () => {
     setIsDeleteOrderId(null);
   };
+
+  if (ordersLoading || productsLoading) {
+    return <div>Загрузка...</div>;
+  }
+
+  if (ordersError || productsError) {
+    return <div>Ошибка загрузки</div>;
+  }
 
   return (
     <>

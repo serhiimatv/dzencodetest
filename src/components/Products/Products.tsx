@@ -1,11 +1,7 @@
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import styles from "./products.module.css";
 import ProductsList from "./ProductsList/ProductsList";
-import data from "../../../mocparoducts.json";
-import { IProduct } from "@/models/product";
-
 const Products = () => {
-  const mocparoducts: IProduct[] = data;
   return (
     <div className={`${styles["products"]} pt-5 pb-5`}>
       <div
@@ -13,7 +9,7 @@ const Products = () => {
       >
         Фильтр: <DropdownMenu />
       </div>
-      <ProductsList products={mocparoducts} />
+      <ProductsList />
     </div>
   );
 };

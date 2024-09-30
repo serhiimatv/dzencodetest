@@ -1,9 +1,8 @@
 import styles from "./modal.module.css";
-import dataProducts from "../../../mocparoducts.json";
-import { IProduct } from "@/models/product";
 import Image from "next/image";
 import removeIconRed from "@/img/remove-red.svg";
 import { motion } from "framer-motion";
+import { useAppSelector } from "@/hooks/reduxHooks";
 
 interface IModalProps {
   id: number;
@@ -11,8 +10,8 @@ interface IModalProps {
 }
 
 const Modal = ({ id, onClose }: IModalProps) => {
-  const orderProducts: IProduct[] = dataProducts.filter(
-    (product) => product.order === id
+  const orderProducts = useAppSelector((state) =>
+    state.products.products.filter((product) => product.order === id)
   );
 
   return (

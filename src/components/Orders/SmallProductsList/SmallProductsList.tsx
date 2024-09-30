@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import dataProducts from "../../../../mocparoducts.json";
-import { IProduct } from "@/models/product";
 import styles from "./smallproductslist.module.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 import { Dispatch } from "react";
+import { useAppSelector } from "@/hooks/reduxHooks";
 
 interface ISmallProductsListProps {
   id: number;
@@ -22,9 +21,10 @@ const SmallProductsList = ({
   title,
   setSelectedOrder,
 }: ISmallProductsListProps) => {
-  const product: IProduct[] = dataProducts.filter(
-    (product) => product.order === id
+  const products = useAppSelector((state) =>
+    state.products.products.filter((product) => product.order === id)
   );
+
   return (
     <motion.div className={`${styles["small-products-list"]}`}>
       <button
@@ -35,7 +35,7 @@ const SmallProductsList = ({
       <ul
         className={`${styles["small-products-list__list"]} d-flex flex-column gap-2`}
       >
-        {product.map((product) => (
+        {products.map((product) => (
           <li
             key={product.id}
             className={`${styles["small-products-list__list-item"]} d-flex align-items-center gap-3`}
