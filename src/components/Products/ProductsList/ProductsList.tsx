@@ -2,12 +2,12 @@
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import styles from "./productslist.module.css";
 import "overlayscrollbars/overlayscrollbars.css";
-import { IProducts } from "@/models/products";
+import { IProduct } from "@/models/product";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 
 interface IProductsListProps {
-  products: IProducts[];
+  products: IProduct[];
 }
 
 const ProductsList = ({ products }: IProductsListProps) => {
@@ -21,7 +21,11 @@ const ProductsList = ({ products }: IProductsListProps) => {
         <ul className={`${styles["products-list"]}`}>
           {products.map((product) => (
             <li className={`${styles["products-list__item"]}`} key={product.id}>
-              <div className={`${styles["products-list__item-img"]}`}></div>
+              <div className={`${styles["products-list__item-img-container"]}`}>
+                <span
+                  className={`${styles["products-list__item-img"]}`}
+                ></span>
+              </div>
               <div className={`${styles["products-list__item-title-sn"]}`}>
                 <span>{product.title}</span>
                 <span>SN:{product.serialNumber}</span>

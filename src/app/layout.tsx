@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { SocketProvider } from "@/providers/socket-provider";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import Template from "./template";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +22,7 @@ export default function RootLayout({
         <SocketProvider>
           <Header />
           <Sidebar />
-          {children}
+          <Template>{children}</Template>
         </SocketProvider>
       </body>
     </html>

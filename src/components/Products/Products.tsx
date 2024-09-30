@@ -2,7 +2,7 @@ import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import styles from "./products.module.css";
 import ProductsList from "./ProductsList/ProductsList";
 import data from "../../../mocparoducts.json";
-import { IProducts } from "@/models/products";
+import { IProducts } from "@/models/product";
 
 const Products = () => {
   const mocparoducts: IProducts[] = data;
