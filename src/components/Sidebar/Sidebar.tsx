@@ -2,7 +2,8 @@ import Image from "next/image";
 import styles from "./sidebar.module.css";
 import avatar from "@/img/avatar.png";
 import settingCircle from "@/img/setting-circle.svg";
-import Link from "next/link";
+import Navbar from "./Navbar/Navbar";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   return (
@@ -25,20 +26,7 @@ const Sidebar = () => {
             alt="setting"
           ></Image>
         </span>
-        <nav className={`${styles["sidebar__navigation"]} mt-5 gap-3`}>
-          <Link
-            href="/orders"
-            className={`${styles["sidebar__navigation-link"]} text-decoration-none text-black`}
-          >
-            Приходы
-          </Link>
-          <Link
-            href="/products"
-            className={`${styles["sidebar__navigation-link"]} text-decoration-none text-black`}
-          >
-            Продукты
-          </Link>
-        </nav>
+        <Navbar />
       </div>
     </aside>
   );

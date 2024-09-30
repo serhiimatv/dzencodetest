@@ -20,17 +20,3 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
-.sidebar__navigation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sidebar__navigation-link {
-  display: block;
-  border-bottom: 3px solid transparent;
-}
-.sidebar__navigation-link:hover {
-  border-bottom: 3px solid green;
-}

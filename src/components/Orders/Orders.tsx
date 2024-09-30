@@ -109,9 +109,6 @@ const Orders = () => {
                     <button
                       className={`${styles["orders__list__item-btn"]} ${styles["orders__list__item-btn--arrow"]}`}
                       onClick={(e) => {
-                        console.log("hide");
-
-                        e.preventDefault();
                         setSelectedOrder(null);
                       }}
                     >
