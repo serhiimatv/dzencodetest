@@ -3,7 +3,6 @@ import styles from "./sidebar.module.css";
 import avatar from "@/img/avatar.png";
 import settingCircle from "@/img/setting-circle.svg";
 import Navbar from "./Navbar/Navbar";
-import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   return (

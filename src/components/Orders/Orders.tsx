@@ -140,7 +140,7 @@ const Orders = () => {
                   {selectedOrder?.id === order.id && (
                     <button
                       className={`${styles["orders__list__item-btn"]} ${styles["orders__list__item-btn--arrow"]}`}
-                      onClick={(e) => {
+                      onClick={() => {
                         setSelectedOrder(null);
                       }}
                     >
