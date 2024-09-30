@@ -20,6 +20,7 @@
   border: 1px solid gray;
   border-radius: 5px;
   cursor: pointer;
+  background-color: white;
 }
 
 .orders__list-item-title {

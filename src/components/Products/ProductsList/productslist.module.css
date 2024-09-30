@@ -21,7 +21,11 @@
   background-color: white;
 }
 
+.products-list__item-img-container {
+  width: 3%;
+}
 .products-list__item-img {
+  display: block;
   width: 30px;
   height: 30px;
   background-color: aqua;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import styles from "./orders.module.css";
 import dataOrders from "../../../mocorders.json";
 import dataProducts from "../../../mocparoducts.json";
@@ -9,11 +9,15 @@ import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 import arrowIcon from "@/img/arrow.svg";
 import { motion } from "framer-motion";
+import SmallProductsList from "./SmallProductsList/SmallProductsList";
 
 const Orders = () => {
   const orders: IOrder[] = dataOrders;
   const products: IProduct[] = dataProducts;
-  const [isShow, setIsShow] = useState<number | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<{
+    id: number;
+    title: string;
+  } | null>(null);
 
   const getTotalAmountFillPriceElements = (id: number): JSX.Element => {
     const filteredProducts = products.filter((product) => product.order === id);
@@ -40,16 +44,22 @@ const Orders = () => {
     );
   };
 
-  const handleShow = (id: number) => {
-    if (!isShow) {
-      setIsShow(id);
+  const handleClick = (
+    event: SyntheticEvent,
+    selectOrder: { id: number; title: string }
+  ) => {
+    const element = event.target as HTMLElement;
+    if (element.tagName === "BUTTON" || element.tagName === "IMG") {
+      return;
     }
+
+    setSelectedOrder(selectOrder);
   };
 
   return (
     <div className={`${styles["orders"]}`}>
       <motion.div
-        animate={{ width: isShow ? "34%" : "100%" }}
+        animate={{ width: selectedOrder ? "34%" : "100%" }}
         transition={{ duration: 0.5 }}
       >
         <ul className={`${styles["orders__list"]} d-flex flex-column gap-2`}>
@@ -57,14 +67,16 @@ const Orders = () => {
             <motion.div key={order.id} whileHover={{ scale: 1.02 }}>
               <li
                 className={`${styles["orders__list-item"]} d-flex align-items-center gap-3`}
-                onClick={() => handleShow(order.id)}
+                onClick={(e) =>
+                  handleClick(e, { id: order.id, title: order.title })
+                }
               >
-                {!isShow && (
+                {!selectedOrder && (
                   <div className={`${styles["orders__list-item-title"]}`}>
                     {order.title}
                   </div>
                 )}
-                {!isShow && (
+                {!selectedOrder && (
                   <div className={`${styles["orders__list-item-date"]}`}>
                     {order.date}
                   </div>
@@ -72,20 +84,25 @@ const Orders = () => {
                 <div className={`${styles["orders__list-item-desc"]}`}>
                   {order.description}
                 </div>
-                {!isShow && (
+                {!selectedOrder && (
                   <div className={`${styles["orders__list-item-price"]}`}>
                     {getTotalAmountFillPriceElements(order.id)}
                   </div>
                 )}
-                {!isShow && (
+                {!selectedOrder && (
                   <button className={`${styles["orders__list__item-btn"]}`}>
                     <Image src={removeIcon} alt="remove icon"></Image>
                   </button>
                 )}
-                {isShow && (
+                {selectedOrder?.id === order.id && (
                   <button
                     className={`${styles["orders__list__item-btn"]} ${styles["orders__list__item-btn--arrow"]}`}
-                    onClick={() => setIsShow(null)}
+                    onClick={(e) => {
+                      console.log("hide");
+
+                      e.preventDefault();
+                      setSelectedOrder(null);
+                    }}
                   >
                     <Image
                       src={arrowIcon}
@@ -100,10 +117,12 @@ const Orders = () => {
           ))}
         </ul>
       </motion.div>
-      {isShow && (
-        <motion.div
-          style={{ width: "64%", height: "1000px", backgroundColor: "red" }}
-        ></motion.div>
+      {selectedOrder && (
+        <SmallProductsList
+          id={selectedOrder.id}
+          title={selectedOrder.title}
+          setSelectedOrder={setSelectedOrder}
+        />
       )}
     </div>
   );

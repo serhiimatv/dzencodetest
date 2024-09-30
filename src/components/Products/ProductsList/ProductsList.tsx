@@ -21,7 +21,11 @@ const ProductsList = ({ products }: IProductsListProps) => {
         <ul className={`${styles["products-list"]}`}>
           {products.map((product) => (
             <li className={`${styles["products-list__item"]}`} key={product.id}>
-              <div className={`${styles["products-list__item-img"]}`}></div>
+              <div className={`${styles["products-list__item-img-container"]}`}>
+                <span
+                  className={`${styles["products-list__item-img"]}`}
+                ></span>
+              </div>
               <div className={`${styles["products-list__item-title-sn"]}`}>
                 <span>{product.title}</span>
                 <span>SN:{product.serialNumber}</span>
