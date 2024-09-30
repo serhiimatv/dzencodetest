@@ -2,15 +2,38 @@
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import styles from "./productslist.module.css";
 import "overlayscrollbars/overlayscrollbars.css";
-import { IProduct } from "@/models/product";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
+import { useAppSelector, useAppStore } from "@/hooks/reduxHooks";
+import { useRef } from "react";
+import {
+  productsErrorSelector,
+  fetchProducts,
+  productsLoadingSelector,
+  productsSelector,
+} from "@/store/slices/productsSlice";
 
-interface IProductsListProps {
-  products: IProduct[];
-}
+const ProductsList = () => {
+  const store = useAppStore();
+  const initialized = useRef(false);
+  if (!initialized.current) {
+    store.dispatch(fetchProducts());
+    initialized.current = true;
+  }
 
-const ProductsList = ({ products }: IProductsListProps) => {
+  const loading = useAppSelector(productsLoadingSelector);
+  const error = useAppSelector(productsErrorSelector);
+
+  const products = useAppSelector(productsSelector);
+
+  if (loading) {
+    return <div>Загрузка...</div>;
+  }
+
+  if (error) {
+    return <div>Ошибка загрузки</div>;
+  }
+
   return (
     <div className={`${styles["products-list-wrapper"]} pt-5`}>
       <OverlayScrollbarsComponent
@@ -22,9 +45,7 @@ const ProductsList = ({ products }: IProductsListProps) => {
           {products.map((product) => (
             <li className={`${styles["products-list__item"]}`} key={product.id}>
               <div className={`${styles["products-list__item-img-container"]}`}>
-                <span
-                  className={`${styles["products-list__item-img"]}`}
-                ></span>
+                <span className={`${styles["products-list__item-img"]}`}></span>
               </div>
               <div className={`${styles["products-list__item-title-sn"]}`}>
                 <span>{product.title}</span>

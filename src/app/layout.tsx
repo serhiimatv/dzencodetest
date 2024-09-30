@@ -5,6 +5,7 @@ import { SocketProvider } from "@/providers/socket-provider";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Template from "./template";
+import StoreProvider from "@/providers/storeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +23,9 @@ export default function RootLayout({
         <SocketProvider>
           <Header />
           <Sidebar />
-          <Template>{children}</Template>
+          <StoreProvider>
+            <Template>{children}</Template>
+          </StoreProvider>
         </SocketProvider>
       </body>
     </html>
