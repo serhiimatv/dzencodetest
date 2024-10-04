@@ -28,7 +28,7 @@
 
 `NEXT_PUBLIC_URL`= 'https://example.com'
 
-## Локальный запуск проекта
+# Локальный запуск проекта
 
 ## Git Hub
 
@@ -48,12 +48,46 @@ npm install
 
 ## Docker
 
+### Запуск деплой проекта на локальной машине
+
 ```bash
  docker pull serhiimatv/dzencodetest
 ```
 
 ```bash
  docker run -p 3000:3000 serhiimatv/dzencodetest
+```
+
+Проект будет доступен по http://localhost:3000
+
+### Распакавать проект из docker container
+
+```bash
+ docker pull serhiimatv/dzencodetest
+```
+
+${NAME} = введите имя контйнера
+
+```bash
+  docker create --name ${NAME} serhiimatv/dzencodetest
+```
+
+```bash
+  docker cp ${NAME}:/app/ .
+```
+
+```bash
+  docker rm ${NAME}
+```
+
+Перейти в папку "app"
+
+```bash
+  cd app
+```
+
+```bash
+ npm run dev || npm run build && npm run start
 ```
 
 ## Deployment
