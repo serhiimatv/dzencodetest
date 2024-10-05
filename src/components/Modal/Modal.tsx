@@ -3,6 +3,7 @@ import Image from "next/image";
 import removeIconRed from "@/img/remove-red.svg";
 import { motion } from "framer-motion";
 import { useAppSelector } from "@/hooks/reduxHooks";
+import { productsInOrderSelector } from "@/store/complexSelectors";
 
 interface IModalProps {
   id: number;
@@ -10,9 +11,7 @@ interface IModalProps {
 }
 
 const Modal = ({ id, onClose }: IModalProps) => {
-  const orderProducts = useAppSelector((state) =>
-    state.products.products.filter((product) => product.order === id)
-  );
+  const orderProducts = useAppSelector(productsInOrderSelector(id));
 
   return (
     <div className={styles["modal"]}>

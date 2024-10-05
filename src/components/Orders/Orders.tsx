@@ -1,5 +1,5 @@
 "use client";
-import React, { SyntheticEvent, useRef, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import styles from "./orders.module.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
@@ -23,12 +23,6 @@ import {
 
 const Orders = () => {
   const store = useAppStore();
-  const initialized = useRef(false);
-  if (!initialized.current) {
-    store.dispatch(fetchProducts());
-    store.dispatch(fetchOrders());
-    initialized.current = true;
-  }
 
   const productsLoading = useAppSelector(productsLoadingSelector);
   const productsError = useAppSelector(productsErrorSelector);
@@ -86,6 +80,11 @@ const Orders = () => {
   const handleModalClose = () => {
     setIsDeleteOrderId(null);
   };
+
+  useEffect(() => {
+    store.dispatch(fetchProducts());
+    store.dispatch(fetchOrders());
+  }, [store]);
 
   if (ordersLoading || productsLoading) {
     return <div>Загрузка...</div>;

@@ -5,7 +5,7 @@ import "overlayscrollbars/overlayscrollbars.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 import { useAppSelector, useAppStore } from "@/hooks/reduxHooks";
-import { useRef } from "react";
+import { useEffect } from "react";
 import {
   productsErrorSelector,
   fetchProducts,
@@ -16,11 +16,6 @@ import {
 
 const ProductsList = () => {
   const store = useAppStore();
-  const initialized = useRef(false);
-  if (!initialized.current) {
-    store.dispatch(fetchProducts());
-    initialized.current = true;
-  }
 
   const loading = useAppSelector(productsLoadingSelector);
   const error = useAppSelector(productsErrorSelector);
@@ -36,6 +31,10 @@ const ProductsList = () => {
         product.type.toLocaleLowerCase() === filter.toLocaleLowerCase()
     );
   });
+
+  useEffect(() => {
+    store.dispatch(fetchProducts());
+  }, [store]);
 
   if (loading) {
     return <div>Загрузка...</div>;
