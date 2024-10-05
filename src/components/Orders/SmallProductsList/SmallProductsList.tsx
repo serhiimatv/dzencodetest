@@ -4,6 +4,7 @@ import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
 import { Dispatch } from "react";
 import { useAppSelector } from "@/hooks/reduxHooks";
+import { productsInOrderSelector } from "@/store/complexSelectors";
 
 interface ISmallProductsListProps {
   id: number;
@@ -21,9 +22,7 @@ const SmallProductsList = ({
   title,
   setSelectedOrder,
 }: ISmallProductsListProps) => {
-  const products = useAppSelector((state) =>
-    state.products.products.filter((product) => product.order === id)
-  );
+  const products = useAppSelector(productsInOrderSelector(id));
 
   return (
     <motion.div className={`${styles["small-products-list"]}`}>
