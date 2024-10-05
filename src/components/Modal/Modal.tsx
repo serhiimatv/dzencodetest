@@ -2,7 +2,7 @@ import styles from "./modal.module.css";
 import Image from "next/image";
 import removeIconRed from "@/img/remove-red.svg";
 import { motion } from "framer-motion";
-import { useAppSelector } from "@/hooks/reduxHooks";
+import { useAppSelector } from "@/hooks/reduxAppHooks";
 import { productsInOrderSelector } from "@/store/complexSelectors";
 
 interface IModalProps {

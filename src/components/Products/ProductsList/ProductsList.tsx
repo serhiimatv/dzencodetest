@@ -4,43 +4,30 @@ import styles from "./productslist.module.css";
 import "overlayscrollbars/overlayscrollbars.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
-import { useAppSelector, useAppStore } from "@/hooks/reduxHooks";
-import { useEffect } from "react";
-import {
-  productsErrorSelector,
-  fetchProducts,
-  productsLoadingSelector,
-  productsSelector,
-  productsFiltersSelector,
-} from "@/store/slices/productsSlice";
+import { useAppSelector } from "@/hooks/reduxAppHooks";
+import { useProductsState } from "@/hooks/useProductsState";
+import { productsSelector } from "@/store/slices/productsSlice";
 
 const ProductsList = () => {
-  const store = useAppStore();
+  const { productsError, productsLoading, productsFilters } =
+    useProductsState();
 
-  const loading = useAppSelector(productsLoadingSelector);
-  const error = useAppSelector(productsErrorSelector);
-  const filter = useAppSelector(productsFiltersSelector);
-
-  const products = useAppSelector((state) => {
+  const filteredProducts = useAppSelector((state) => {
     const products = productsSelector(state);
-    if (!filter) {
+    if (!productsFilters) {
       return products;
     }
     return products.filter(
       (product) =>
-        product.type.toLocaleLowerCase() === filter.toLocaleLowerCase()
+        product.type.toLocaleLowerCase() === productsFilters.toLocaleLowerCase()
     );
   });
 
-  useEffect(() => {
-    store.dispatch(fetchProducts());
-  }, [store]);
-
-  if (loading) {
+  if (productsLoading) {
     return <div>Загрузка...</div>;
   }
 
-  if (error) {
+  if (productsError) {
     return <div>Ошибка загрузки</div>;
   }
 
@@ -52,7 +39,7 @@ const ProductsList = () => {
         defer
       >
         <ul className={`${styles["products-list"]}`}>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <li className={`${styles["products-list__item"]}`} key={product.id}>
               <div className={`${styles["products-list__item-img-container"]}`}>
                 <span className={`${styles["products-list__item-img"]}`}></span>

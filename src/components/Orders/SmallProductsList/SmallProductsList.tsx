@@ -2,33 +2,24 @@ import { motion } from "framer-motion";
 import styles from "./smallproductslist.module.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
-import { Dispatch } from "react";
-import { useAppSelector } from "@/hooks/reduxHooks";
+import { useAppSelector } from "@/hooks/reduxAppHooks";
 import { productsInOrderSelector } from "@/store/complexSelectors";
+import { SyntheticEvent } from "react";
 
 interface ISmallProductsListProps {
   id: number;
   title: string;
-  setSelectedOrder: Dispatch<
-    React.SetStateAction<{
-      id: number;
-      title: string;
-    } | null>
-  >;
+  onClose: (e: SyntheticEvent) => void;
 }
 
-const SmallProductsList = ({
-  id,
-  title,
-  setSelectedOrder,
-}: ISmallProductsListProps) => {
+const SmallProductsList = ({ id, title, onClose }: ISmallProductsListProps) => {
   const products = useAppSelector(productsInOrderSelector(id));
 
   return (
     <motion.div className={`${styles["small-products-list"]}`}>
       <button
         className={`${styles["small-products-list-btn"]} btn-close`}
-        onClick={() => setSelectedOrder(null)}
+        onClick={onClose}
       ></button>
       <h2 className={`${styles["small-products-list__title"]}`}>{title}</h2>
       <ul

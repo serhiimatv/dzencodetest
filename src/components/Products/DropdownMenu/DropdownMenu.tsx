@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./dropdownmenu.module.css";
-import { useAppDispatch, useAppSelector } from "@/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/reduxAppHooks";
 import {
   productsFiltersSelector,
   toggleFilters,
