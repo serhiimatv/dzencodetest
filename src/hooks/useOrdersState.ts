@@ -17,7 +17,7 @@ export const useOrdersState = () => {
 
   useEffect(() => {
     dispatch(fetchOrders());
-  }, [dispatch]);
+  }, []);
 
   const memoizedOrders = useMemo(() => {
     return { orders, ordersLoading, ordersError };

@@ -31,6 +31,11 @@ const Orders = () => {
     setIsDeleteOrderId(null);
   };
 
+  const handleSelectRemoveOrder = (e: SyntheticEvent, id: number) => {
+    e.stopPropagation();
+    setIsDeleteOrderId(id);
+  };
+
   if (ordersLoading || productsLoading) {
     return <div>Загрузка...</div>;
   }
@@ -84,7 +89,9 @@ const Orders = () => {
                     {!selectedOrder && (
                       <button
                         className={`${styles["orders__list__item-btn"]}`}
-                        onClick={() => setIsDeleteOrderId(order.id)}
+                        onClick={(event) =>
+                          handleSelectRemoveOrder(event, order.id)
+                        }
                       >
                         <Image src={removeIcon} alt="remove icon"></Image>
                       </button>

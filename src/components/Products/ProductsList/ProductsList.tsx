@@ -4,24 +4,11 @@ import styles from "./productslist.module.css";
 import "overlayscrollbars/overlayscrollbars.css";
 import Image from "next/image";
 import removeIcon from "@/img/remove.svg";
-import { useAppSelector } from "@/hooks/reduxAppHooks";
 import { useProductsState } from "@/hooks/useProductsState";
-import { productsSelector } from "@/store/slices/productsSlice";
 
 const ProductsList = () => {
-  const { productsError, productsLoading, productsFilters } =
+  const { productsError, productsLoading, filteredProducts } =
     useProductsState();
-
-  const filteredProducts = useAppSelector((state) => {
-    const products = productsSelector(state);
-    if (!productsFilters) {
-      return products;
-    }
-    return products.filter(
-      (product) =>
-        product.type.toLocaleLowerCase() === productsFilters.toLocaleLowerCase()
-    );
-  });
 
   if (productsLoading) {
     return <div>Загрузка...</div>;
